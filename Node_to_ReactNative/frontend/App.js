@@ -13,7 +13,7 @@ export default function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post("http://192.168.110.188:8000/data", { food });
+      const response = await axios.post("http://localhost:8383/data", { food });
       setDataSet(response.data);
     } catch (e) {
       console.log(e);
@@ -50,7 +50,7 @@ export default function App() {
   }
 
   const addSelectedFoodArray = async() => {
-    await axios.post("http://192.168.110.188:8000/selected", { selectedFoods })
+    await axios.post("http://localhost:8383/selected", { selectedFoods })
     .then( response => {
       console.log(response.data);
     })

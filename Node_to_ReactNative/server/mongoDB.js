@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const uri = 'mongodb://127.0.0.1:27017/demo'; //local URL
+const uri = 'mongodb://127.0.0.1:27017/'; //local URL
 
 const dbName = 'essentia'; //Database info
 const foodCollection = 'foodDetails'

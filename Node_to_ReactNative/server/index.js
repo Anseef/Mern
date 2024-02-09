@@ -6,7 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json()); 
 
-
 app.post('/data', async (request, response) => {
     const foodData = request.body
     if(foodData.food !== ''){
@@ -26,15 +25,15 @@ app.post('/selected', async (request, response) => {
         const insertQuery = await storedFoodCollection.insertOne(selectedFood);
         const allData = await storedFoodCollection.find({
             $and: [
-                { "selectedFoods.Date": '2024-02-04' },
+                { "selectedFoods.Date": '2024-02-05' },
                 { "selectedFoods.MealTime": 'Lunch' }
             ]
         }).toArray();
         
 
-        allData.map(async (foodItem) => {
+        await Promise.all(allData.map(async (foodItem) => {
             console.log(foodItem);
-        });
+        }));
 
         if (insertQuery) {
             response.json("Insertion Successful");
@@ -46,6 +45,6 @@ app.post('/selected', async (request, response) => {
 });
 
 
-app.listen(8000, () => {
-  console.log('Server listening on port 8000');
+app.listen(8383, () => {
+  console.log('Server listening on port 8383');
 });
